@@ -109,7 +109,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
 #define SPLIT_LAYER_STATE_ENABLE
 #define SPLIT_WPM_ENABLE //Enable WPM across split keyboards (+268).
-#define NO_ACTION_ONESHOT
-//#define SPLIT_OLED_ENABLE
+#define NO_ACTION_ONESHOTSPLIT_LAYER_STATE_ENABLE
+// marek changed
+#define SPLIT_OLED_ENABLE
+#define OLED_TIMEOUT 30000
+#define OLED_SCROLL_TIMEOUT 0
+#define OLED_TRANSPORT i2c
+// \marek out
 
 #define DYNAMIC_KEYMAP_LAYER_COUNT 4
+
+
