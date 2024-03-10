@@ -17,13 +17,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #pragma once
-
 /* Select hand configuration */
 
 #define MASTER_LEFT
 // #define MASTER_RIGHT
 // #define EE_HANDS
-
+//
 #ifdef RGBLIGHT_ENABLE
     #define RGBLIGHT_EFFECT_BREATHING
     #define RGBLIGHT_EFFECT_RAINBOW_MOOD
@@ -42,8 +41,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endif
 
 #ifdef RGB_MATRIX_ENABLE
+// MAREK
 #   define RGB_MATRIX_KEYPRESSES // reacts to keypresses
-#   define RGB_MATRIX_KEYRELEASES // reacts to keyreleases (instead of keypresses)
+// #   define RGB_MATRIX_KEYRELEASES // reacts to keyreleases (instead of keypresses)
 #   define RGB_DISABLE_AFTER_TIMEOUT 0 // number of ticks to wait until disabling effects
 #   define RGB_DISABLE_WHEN_USB_SUSPENDED // turn off effects when suspended
 #   define RGB_MATRIX_FRAMEBUFFER_EFFECTS
@@ -111,9 +111,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SPLIT_WPM_ENABLE //Enable WPM across split keyboards (+268).
 #define NO_ACTION_ONESHOTSPLIT_LAYER_STATE_ENABLE
 // marek changed
+#define RGB_MATRIX_TIMEOUT 90000 // number of milliseconds to wait until rgb automatically turns off
+#define OLED_TIMEOUT 50000
+
 #define SPLIT_OLED_ENABLE
-#define OLED_TIMEOUT 30000
-#define OLED_SCROLL_TIMEOUT 0
+#define OLED_SCROLL_TIMEOUT 50000
 #define OLED_TRANSPORT i2c
 // \marek out
 

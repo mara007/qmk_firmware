@@ -73,30 +73,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };// clang-format on
 
 
-static bool g_sleeping = false;
-
-static void go_sleep(void) {
-    if (g_sleeping)
-        return;
-
-    g_sleeping = true;
-
-    oled_clear();
-    oled_off();
-
-    rgblight_disable_noeeprom();
-}
-
-
-static void go_awake(void) {
-    if (!g_sleeping)
-        return;
-
-    g_sleeping = false;
-
-    oled_on();
-    rgblight_enable_noeeprom();
-}
+// static bool g_sleeping = false;
+//
+// static void go_sleep(void) {
+//     return;
+//     if (g_sleeping)
+//         return;
+//
+//     g_sleeping = true;
+//
+//     oled_clear();
+//     oled_off();
+//
+//     rgblight_disable_noeeprom();
+// }
+//
+//
+// static void go_awake(void) {
+//     return;
+//     if (!g_sleeping)
+//         return;
+//
+//     g_sleeping = false;
+//
+//     oled_on();
+//     rgblight_enable_noeeprom();
+// }
 
 
 #ifdef OLED_ENABLE
@@ -164,7 +166,7 @@ static void render_logo(void) {
 
 /* timers */
 uint32_t anim_timer = 0;
-uint32_t anim_sleep = 0;
+uint32_t anim_sleep = 2;
 
 /* current frame */
 uint8_t current_frame = 0;
@@ -284,21 +286,21 @@ static void render_luna(int LUNA_X, int LUNA_Y) {
 /* KEYBOARD PET END */
 
 static void print_logo_narrow(void) {
-    if (current_wpm > 0) {
-        go_awake();
+    // if (current_wpm > 0) {
+    //     go_awake();
 
         render_logo();
-        anim_sleep = timer_read32();
+        // anim_sleep = timer_read32();
         /* wpm counter */
         oled_set_cursor(0, 14);
         oled_write(get_u8_str(get_current_wpm(), '0'), false);
 
         oled_set_cursor(0, 15);
         oled_write(" wpm", false);
-    }
-    else if(timer_elapsed32(anim_sleep) > OLED_TIMEOUT) {
-        go_sleep();
-    }
+    // }
+    // else if(timer_elapsed32(anim_sleep) > OLED_TIMEOUT) {
+    //     go_sleep();
+    // }
 }
 
 
@@ -348,10 +350,12 @@ bool oled_task_user(void) {
 
     /* KEYBOARD PET VARIABLES END */
     if (current_wpm > 0) {
-        go_awake();
+        // go_awake();
         anim_sleep = timer_read32();
-    } else if(timer_elapsed32(anim_sleep) > OLED_TIMEOUT) {
-        go_sleep();
+    }
+
+    if(timer_elapsed32(anim_sleep) > OLED_TIMEOUT) {
+        // go_sleep();
         return false;
     }
 

@@ -12,7 +12,6 @@ RGBLIGHT_ENABLE = YES
 RGB_MATRIX_ENABLE = yes    # Enable WS2812 RGB underlight.
 VIA_ENABLE      = yes    # Enable VIA
 OLED_ENABLE     = yes
-OLED_TIMEOUT    = 120000
 LTO_ENABLE      = yes
 WPM_ENABLE      = yes
 CONVERT_TO      = rp2040_ce
